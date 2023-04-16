@@ -20,7 +20,7 @@ if (isset($_POST['update_post'])){
     <form action="" method="POST"  class="form" enctype="multipart/form-data">
 
     <div class="form-group">
-        <input type="text" name="edit_post_id" value="<?php  echo $id ?>">
+        <input type="hidden" name="edit_post_id" value="<?php  echo $id ?>">
         <label class="mb-1" for="change_title">Change Title</label></br>
         <input value="<?php echo $previous_post_data["post_title"] ?>" class="form-control py-4" name="change_title" id="change_title" type="text" />
     </div>

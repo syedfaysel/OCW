@@ -8,7 +8,7 @@
 
 ?>
 
-<h2>Add Post View</h2>
+<h2>Add Your Post</h2>
 <?php if (isset($msg)){echo $msg;} ?>
 
 <form action="" method="POST" enctype="multipart/form-data">

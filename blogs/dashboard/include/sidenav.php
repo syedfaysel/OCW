@@ -15,8 +15,7 @@
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="add_catagory.php"> Add Catagory </a>
-                                    <a class="nav-link" href="manage_catagory.php"> Manage Catagory </a>
+                                    <a class="nav-link" href="add_catagory.php"> Add Category </a>
                                 </nav>
                             </div>
 

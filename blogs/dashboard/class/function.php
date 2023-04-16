@@ -111,7 +111,7 @@ class admin_blog
             $sql= "SELECT * FROM blogs WHERE status='Publish' AND post_id ='$id'";
         }
         else{
-            $sql= "SELECT * FROM blogs WHERE status='Publish'";
+            $sql= "SELECT * FROM blogs WHERE status='Publish'" ;
         }
         
         if(mysqli_query($this->conn,$sql)){
@@ -133,12 +133,12 @@ class admin_blog
         $id=$data['editimg_id'];
         $img_name=$_FILES['change_img']['name'];
         $tmp_name=$_FILES['change_img']['tmp_name'];
-        echo $id, $img_name;
+        // echo $id, $img_name;
         $sql= "UPDATE blogs SET post_img='$img_name' WHERE post_id='$id'";
 
         if (mysqli_query($this->conn, $sql)){ 
             move_uploaded_file($tmp_name, '../../blogs/upload/'.$img_name); 
-            echo "Successfull!";
+            echo "Image Changed Successfully!";
     }
 
     }
@@ -159,9 +159,9 @@ class admin_blog
         $status=$data['change_post_status'];
 
         $sql="UPDATE blogs SET post_title='$title', post_content='$content', status='$status' WHERE post_id='$id'  ";
-        echo "NAIM";        
+        // echo "NAIM";        
         if(mysqli_query($this->conn,$sql)){
-            return "Sucessful";
+            return "Update Post Sucessful";
         }
     
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 16, 2023 at 07:16 PM
+-- Generation Time: Apr 17, 2023 at 01:40 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -105,7 +105,8 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`comment_id`, `post_id`, `author`, `comment_text`, `comment_at`) VALUES
-(1, 2, 'rajo', 'Bhai, Chobi koi', '2023-04-15 22:46:15');
+(1, 2, 'rajo', 'Bhai, Chobi koi', '2023-04-15 22:46:15'),
+(2, 2, 'rajo', 'WOw', '2023-04-16 18:35:13');
 
 -- --------------------------------------------------------
 
@@ -131,12 +132,13 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`course_code`, `course_title`, `course_description`, `price_type`, `course_price`, `course_type`, `difficulty_level`, `thumbnail`, `added_by`, `created_at`) VALUES
-('CSE-101', 'Introduction to Computer Science', 'This course is designed to introduce students to the field of computer science. The course will cover the basic concepts of computer science, including the history of computing, the hardware and software components of a computer, and the basic concepts of programming.', 'FREE', '0.00', 'Academic', 'Beginner', NULL, 'mahrjose', '2023-04-05 21:24:41'),
-('CSE110', 'Programming Language I', 'This course is designed to introduce students to the field of computer science & Programming Language ', 'FREE', '0.00', 'Academic', 'Beginner', NULL, 'syedfaysel', '2023-04-05 22:36:04'),
-('CSE220', 'Data Structures', 'This course is designed to introduce students to the field of computer science & Programming Language ', 'FREE', '0.00', 'Academic', 'Intermediate', NULL, 'syedfaysel', '2023-04-14 23:17:32'),
-('CSE221', 'Algorithm Design & Analysis', 'Amazing Course', 'FREE', '0.00', 'Academic', 'Intermediate', NULL, 'syedfaysel', '2023-04-15 18:18:21'),
-('CSE331', 'Automata', 'triala', 'FREE', '0.00', 'Academic', 'Advance', NULL, 'rajo', '2023-04-15 18:32:44'),
-('web101', 'Website Design', 'Very simple course', 'FREE', '0.00', 'Skill', 'Beginner', 'default.jpg', 'afra', '2023-04-15 20:19:10');
+('CSE-101', 'Introduction to Computer Science', 'This course is designed to introduce students to the field of computer science. The course will cover the basic concepts of computer science, including the history of computing, the hardware and software components of a computer, and the basic concepts of programming.', 'FREE', '0.00', 'Academic', 'Beginner', 'php-tutorials.png', 'mahrjose', '2023-04-05 21:24:41'),
+('CSE110', 'Programming Language I', 'This course is designed to introduce students to the field of computer science & Programming Language ', 'FREE', '0.00', 'Academic', 'Beginner', 'python-1110x550.jpg', 'syedfaysel', '2023-04-05 22:36:04'),
+('CSE220', 'Data Structures', 'This course is designed to introduce students to the field of computer science & Programming Language ', 'FREE', '0.00', 'Academic', 'Intermediate', 'php-tutorials.png', 'syedfaysel', '2023-04-14 23:17:32'),
+('CSE221', 'Algorithm Design & Analysis', 'Amazing Course', 'FREE', '0.00', 'Academic', 'Intermediate', 'python-1110x550.jpg', 'syedfaysel', '2023-04-15 18:18:21'),
+('CSE331', 'Automata', 'triala', 'FREE', '0.00', 'Academic', 'Advance', 'python-1110x550.jpg', 'rajo', '2023-04-15 18:32:44'),
+('CSE370', 'Database Systems', 'CSE370 is amazing', 'FREE', '0.00', 'Academic', 'Intermediate', 'php-tutorials.png', 'admin', '2023-04-16 18:38:29'),
+('web101', 'Website Design', 'Very simple course', 'FREE', '0.00', 'Skill', 'Beginner', 'python-1110x550.jpg', 'afra', '2023-04-15 20:19:10');
 
 -- --------------------------------------------------------
 
@@ -193,6 +195,7 @@ CREATE TABLE `paymentInfo` (
 
 INSERT INTO `paymentInfo` (`trx_id`, `username`, `course_code`, `approval`, `approved_by`, `created_at`) VALUES
 ('abc12xyzUmno', 'gleen222', 'CSE110', 'Approved', 'rajo', '2023-04-14 22:45:28'),
+('freecourseXYZ', 'admin', 'CSE110', 'Not Reviewed', NULL, '2023-04-16 22:37:27'),
 ('randomTrxId', 'afra', 'CSE110', 'Approved', NULL, '2023-04-16 00:42:52');
 
 -- --------------------------------------------------------
@@ -345,7 +348,7 @@ ALTER TABLE `blogs`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `materials`

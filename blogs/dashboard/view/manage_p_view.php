@@ -13,7 +13,7 @@
 ?>
 
 
-<h2>Manage Post View</h2>
+<h2>Manage Your Post</h2>
 <div class="table-resposive">
     <table class="table">
         <thead>
