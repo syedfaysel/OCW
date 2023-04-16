@@ -1,4 +1,4 @@
 <?php 
-    $view= "add_post";
+    $view= "edit_course";
     include("template.php")
 ?>

@@ -85,7 +85,55 @@ class Courses extends Dbconnect {
         $stmt->execute();
         return $stmt->fetchAll();
     }
+
+
+    public function getPaymentInfo(){
+        $stmt = $this->conn->prepare("SELECT * FROM paymentInfo ORDER BY created_at DESC ");
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+
+
+
+    public function updateCourse($data){
+        $course_code = $data['username'];
+        $course_title = $data['first_name'];
+        $course_description = $data['last_name'];
+        $price_type = $data['email'];
+        $course_price = $data['email'];
+        $course_type = $data['email'];
+        $difficulty_level = $data['email'];
+        $thumbnail = $data['email'];
+
+        if(!isset($data['thumbnail'])){
+            $stmt = $this->conn->prepare("UPDATE `courses` SET `course_code`='$course_code',`course_title`='$course_title',`course_description`='$course_description',`price_type`='$price_type',`course_price`='$course_price',`course_type`='$course_price',`difficulty_level`='$difficulty_level' WHERE course_code = '$course_code'");
+        }
+
+        else{
+            $thumbnail = $data['thumbnail'];
+            $stmt = $this->conn->prepare("UPDATE `courses` SET `course_code`='$course_code',`course_title`='$course_title',`course_description`='$course_description',`price_type`='$price_type',`course_price`='$course_price',`course_type`='$course_type',`difficulty_level`='$difficulty_level',`thumbnail`='$thumbnail' WHERE course_code = '$course_code'");
+        }
+
+
+
+        $stmt->execute();
+        
+        if($stmt->rowCount() > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+
+
 }
+
+
 
 
 

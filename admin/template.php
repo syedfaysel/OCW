@@ -1,7 +1,7 @@
 <?php 
 
     session_start();
-    if(!isset($_SESSION["username"]) && $_SESSION["authority_level"]!= 'ADMIN'){
+    if(!isset($_SESSION["admin"])){
         header("location: login.php");
     }
 
@@ -33,22 +33,52 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <?php if(isset($view)){
-                        if ($view=="dashboard"){
-                            include("view/dashboard_view.php");
-                        }elseif($view=="add_catagory"){
-                            include("view/add_c_view.php");
-                        }elseif($view=="add_post"){
-                            include("view/add_p_view.php");
-                        }elseif($view=="manage_catagory"){
-                            include("view/manage_c_view.php");
-                        }elseif($view=="manage_post"){
-                            include("view/manage_p_view.php");
-                        }elseif($view=="edit_image"){
-                            include("view/edit_image_view.php");
-                        }elseif($view=="edit_post"){
-                            include("view/edit_post_view.php");
-                    }}
+                    <?php 
+                    
+
+                    if(isset($view)){
+                        switch($view){
+
+
+                            case "dashboard":
+                                include("view/dashboard_view.php");
+                                break;
+                            case "add_catagory":
+                                include("view/add_c_view.php");
+                                break;
+                            case "manage_catagory":
+                                include("view/manage_c_view.php");
+                                break;
+                            case "manage_post":
+                                include("view/manage_p_view.php");
+                                break;
+                            case "edit_image":
+                                include("view/edit_image_view.php");
+                                break;
+                            case "edit_course":
+                                include("view/edit-course-view.php");
+                                break;
+                            case "add_course":
+                                    include("view/add-course-view.php");
+                                    break;
+                            case "all_course":
+                                include("view/all-course-view.php");
+                                break;
+                            case "enrollment":
+                                include("view/manage-enrollment-view.php");
+                                break;
+
+                            case "manage_users":
+                                include("view/manage-user-view.php");
+                                break;
+
+                            case "edit_user":
+                                include("view/edit-user-view.php");
+                                break;
+                            default:
+                                include("view/dashboard_view.php");
+                        }
+                    }
                     
                     
                     ?>

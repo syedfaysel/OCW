@@ -56,7 +56,7 @@ $i = new Insert();
                         <a class="btn btn-primary" href="discussion.php?course_code=<?php echo htmlspecialchars($course[0]['course_code']) ?>">Discussion</a>
 
                     <?php } else { ?>
-                        <p>Price:</p>
+                        <p>Price:<?=$course[0]['course_price']?></p>
                         <a class="btn btn-primary" href=""  data-bs-toggle="modal" data-bs-target="#enroll">Enroll Now</a>
 
                     <?php } 
@@ -104,8 +104,10 @@ $i = new Insert();
                         <form action="" method="POST">
                             <label for="">Enrolling the following course</label>
                             <input class="form-control py-2 my-2" type="text" name="course_code" id="" value="<?= $course[0]['course_code'] ?>" readonly>
+
                             <label for="">TrxId</label>
                             <input class="form-control py-2 my-2" type="text" name="trx_id" required>
+                            
                             
                             <button class="form-control btn btn-secondary" type="submit" name="submit">Confirm</button> 
                         </form>

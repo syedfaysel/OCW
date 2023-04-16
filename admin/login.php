@@ -1,6 +1,9 @@
 <?php 
 
     session_start();
+    if(isset($_SESSION["admin"])){
+        header("location: index.php");
+    }
     require "../config/dbconnect.php";
     require_once "../config/classes/Users.php";
     require_once "../config/classes/Update.php";

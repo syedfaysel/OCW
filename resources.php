@@ -34,7 +34,6 @@ include "./templates/header.php"
         <table class="table container bg-warning-subtle shadow my-3 rounded" id="dataTable">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">File Title</th>
                     <th scope="col">Course</th>
                     <th scope="col">Uploaded By</th>
@@ -45,7 +44,6 @@ include "./templates/header.php"
                 <?php foreach($resources as $resource){ ?>
 
                 <tr>
-                    <th scope="row">1</th>
                     <td><?php echo htmlspecialchars($resource['material_title']); ?></td>
                     <td><?php echo htmlspecialchars($resource['course_code']); ?></td>
                     <td>@<?php echo htmlspecialchars($resource['uploader']); ?></td>

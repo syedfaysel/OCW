@@ -55,16 +55,18 @@ class User extends Dbconnect {
         if (!$user) {
             return false;
         }
+        else{
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['email'] = $user['email'];
+            $_SESSION['admin']  = $user['username'];
+            $_SESSION['authority_level']  = $user['authority_level'];
+    
+            return true;
+        }
 
         // if (!password_verify($password, $user['password'])) {
         //     return false;
         // }
-
-        $_SESSION['username'] = $user['username'];
-        $_SESSION['email'] = $user['email'];
-        $_SESSION['authority_level']  = $user['authority_level'];
-
-        return true;
     }
 
 
@@ -108,8 +110,16 @@ class User extends Dbconnect {
         $last_name = $data['last_name'];
         $email = $data['email'];
 
+        if(!isset($data['authority_level'])){
+            $stmt = $this->conn->prepare("UPDATE users SET first_name = '$first_name', last_name = '$last_name', email = '$email' WHERE username = '$username'");
+        }
 
-        $stmt = $this->conn->prepare("UPDATE users SET first_name = '$first_name', last_name = '$last_name', email = '$email' WHERE username = '$username'");
+        else{
+            $authority_level = $data['authority_level'];
+            $stmt = $this->conn->prepare("UPDATE users SET first_name = '$first_name', last_name = '$last_name', email = '$email', authority_level = '$authority_level' WHERE username = '$username'");
+        }
+
+
 
         $stmt->execute();
         
@@ -120,6 +130,7 @@ class User extends Dbconnect {
             return false;
         }
     }
+    
 
 
 

@@ -5,10 +5,11 @@
 <section class="my-3">
     <div class="container justify-content-center bg-success-subtle shadow rounded p-3">
         <h4>User Profile <span style="font-size:small"><a href="#edit" data-bs-toggle="modal" data-bs-target="#editProfile"><i class="fas fa-user-pen fa-fw"></i>Edit</a></span></h4>
-        <p> <?php echo htmlspecialchars($user_info['first_name']); ?>
+        <p>Name: <?php echo htmlspecialchars($user_info['first_name']); ?>
         </p>
-        <p><?php echo htmlspecialchars($user_info['username']); ?>
+        <p>username: <?php echo htmlspecialchars($user_info['username']); ?>
         </p>
+        <p>Email: <?= $user_info['email']?></p>
 
     </div>
 
