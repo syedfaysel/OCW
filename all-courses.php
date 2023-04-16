@@ -38,7 +38,7 @@ include "./templates/header.php";
             
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-3 mb-sm-0 d-flex justify-content-center" >
                     <div class="card shadow rounded" style="width: 18rem;">
-                        <img src="..." class="card-img-top" alt="...">
+                        <img src="./blogs/upload/<?=$course['thumbnail']?>" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($course['course_code']); ?>
                             </h5>

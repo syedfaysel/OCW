@@ -7,6 +7,11 @@ $course = $course[0];
 
 
 
+if(isset($_POST['submit'])){
+
+    $c->updateCourse($_POST);
+
+}
 
 
 
@@ -14,7 +19,7 @@ $course = $course[0];
 
 <div class="container col-lg-6 shadow rounded bg-warning-subtle my-3 p-4">
             <h4 class="text-center">Update Course</h4>
-            <form action="edit-course.php" method="POST" enctype="multipart/form-data">
+            <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Course Code</label>
                     <input type="text" class="form-control"  name="course_code" placeholder="i.e CSE370" required value="<?= $course['course_code']?>">

@@ -98,14 +98,13 @@ class Courses extends Dbconnect {
 
 
     public function updateCourse($data){
-        $course_code = $data['username'];
-        $course_title = $data['first_name'];
-        $course_description = $data['last_name'];
-        $price_type = $data['email'];
-        $course_price = $data['email'];
-        $course_type = $data['email'];
-        $difficulty_level = $data['email'];
-        $thumbnail = $data['email'];
+        $course_code = $data['course_code'];
+        $course_title = $data['course_title'];
+        $course_description = $data['course_description'];
+        $price_type = $data['price_type'];
+        $course_price = $data['course_price'];
+        $course_type = $data['course_type'];
+        $difficulty_level = $data['difficulty_level'];
 
         if(!isset($data['thumbnail'])){
             $stmt = $this->conn->prepare("UPDATE `courses` SET `course_code`='$course_code',`course_title`='$course_title',`course_description`='$course_description',`price_type`='$price_type',`course_price`='$course_price',`course_type`='$course_price',`difficulty_level`='$difficulty_level' WHERE course_code = '$course_code'");

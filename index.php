@@ -453,7 +453,7 @@ $u = new User();
                     <a href="all-courses.php?course_code=<?= $course['course_code']?>">
                         <div class="portfolio-item">
                             <div class="thumb">
-                            <img src="assets/images/<?= $course['thumbnail']?>" alt="">
+                            <img src="./blogs/upload/<?=$course['thumbnail']?>" alt="">
                             </div>
                             <div class="down-content">
                                 <h4><?=$course['course_code'] ?></h4>
