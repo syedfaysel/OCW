@@ -1,7 +1,8 @@
 <?php 
+    session_start();
+    
 
-
-    $posts = $obj->display_post();
+    $posts = $obj->displayPostByUser($_SESSION["username"]);
 
     if (isset($_GET["status"])){
         if ($_GET["status"]=="delete"){

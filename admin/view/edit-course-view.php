@@ -9,8 +9,12 @@ $course = $course[0];
 
 if(isset($_POST['submit'])){
 
-    $c->updateCourse($_POST);
-
+    if($c->updateCourse($_POST)){
+        echo "Course Updated Successfully";
+    }
+    else{
+        echo "Error: " . $error[2];
+    }
 }
 
 
@@ -18,7 +22,15 @@ if(isset($_POST['submit'])){
 ?>
 
 <div class="container col-lg-6 shadow rounded bg-warning-subtle my-3 p-4">
+
+
             <h4 class="text-center">Update Course</h4>
+
+            <?php 
+            
+            
+            ?>
+            
             <form action="" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Course Code</label>

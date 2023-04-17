@@ -90,6 +90,58 @@ class Insert extends Dbconnect {
         }
         
     }
+
+
+    public function approveEnroll($trx_id){
+        $stmt = $this->conn->prepare("UPDATE `paymentInfo` SET `approval`='Approved' WHERE `trx_id` = :trx_id");
+
+        if($stmt->execute(['trx_id' => $trx_id])){
+            return true;
+        }
+        else{
+            return false;
+        }
+        
+    }
+
+
+
+
+    // Forums
+    public function insertQuestion($data){
+
+        $stmt = $this->conn->prepare("INSERT INTO questions (`course_code`, `username`, `question_title`, `question_body`) VALUES (:course_code, :username, :question_title, :question_body)");
+
+        $stmt->execute($data);
+
+        if ($stmt->rowCount() > 0) {    
+            return true;
+        } else {
+            return false;
+        }
+
+
+        }
+
+
+    public function insertAnswer($course_code, $question_id, $username, $answer_text){
+        $question_id = intval($question_id);
+
+        $stmt = $this->conn->prepare("INSERT INTO `answers` (`course_code`, `question_id`, `username`, `answer_text`) VALUES (, :question_id, :username, :answer_text");
+        $stmt->bindParam(':course_code', $course_code);
+        $stmt->bindParam(':question_id', $question_id);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':answer_text', $answer_text);
+
+        $stmt->execute();
+
+        if ($stmt->rowCount() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 }
 
 

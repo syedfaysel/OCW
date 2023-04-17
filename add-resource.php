@@ -1,45 +1,51 @@
 <?php 
 session_start();
 
+
+// ini_set('display_errors', 1);
+// ini_set('display_startup_errors', 1);
+// error_reporting(E_ALL);
+
+if(!isset($_SESSION['username'])){
+    header('Location: login.php');
+}
+
 include "./config/dbconnect.php" ;
+include "./config/classes/Courses.php";
+include "./config/classes/Insert.php";
+include "./config/classes/Users.php";
+
+$i = new Insert();
+$c = new Courses();
+
+$courses = $c->getAllCourses();
 
 
+$msg = '';
+if(isset($_POST['submit']) && isset($_POST['title']) && isset($_POST['course']) && isset($_FILES['file'])){
 
-$courseQuery = "SELECT course_code, course_title FROM courses";
-$result = mysqli_query($conn, $courseQuery);
-if(!$result){
-    echo "Error: " . $courseQuery . "<br>" . mysqli_error($conn);
-}
-else{
-    $courses = mysqli_fetch_all($result, MYSQLI_ASSOC);
-}
-
-
-if(isset($_POST['title']) && isset($_POST['course']) && isset($_FILES['file'])){
-    $title = $_POST['title'];
-    $course = $_POST['course'];
+    $_POST['material_type'] = 'Resource';
+    $_POST['uploader'] = $_SESSION['username'];
+    
 
     $fileName = $_FILES['file']['name'];
+    $_POST['resource_path'] = $fileName;
     
     $fileTmpName = $_FILES['file']['tmp_name'];
     $dir = "/uploads/resources/";
 
 
-
-    $query = "INSERT INTO materials (material_title, course_code, material_type, resource_path, uploader) VALUES ('$title', '$course', 'Resource', '$fileName', '$_SESSION[username]')";
-    
-
-    if(!mysqli_query($conn, $query)){
-        echo "Error: " . $query . "<br>" . mysqli_error($conn);
+    print_r($_POST);
+    if($i->insertIntoMaterials($_POST)){
+        $msg =  '<div class="alert alert-success alert-dismissible fade show container" role="alert">
+    <strong>Thank You!</strong> Resources uploaded Successfully.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+    }
+    else{
+        $msg =  '<div class="alert alert-danger alert-dismissible fade show container" role="alert"><strong>Sorry!</strong> Something went wrong.</div>';
     }
     move_uploaded_file($fileTmpName, $dir.$filename);
 
-
-
-
-    $msg =  '<div class="alert alert-success alert-dismissible fade show container" role="alert">
-    <strong>Thank You!</strong> Resources uploaded Successfully.
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
 }
 
 include "./templates/header.php"
@@ -57,14 +63,14 @@ include "./templates/header.php"
             <h3>Upload Resource</h3>
             
             
-            <form action="" method="POST" enctype="multipart/form-data">
+            <form action="add-resource.php" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="title">Resource Title</label>
-                    <input type="text" class="form-control"  name="title" placeholder="i.e Question paper from spring 23" required>
+                    <input type="text" class="form-control"  name="material_title" placeholder="i.e Question paper from spring 23" required>
                 </div>
                 <div class="form-group">
                     <label for="course">Course</label>
-                    <select class="form-control" id="course" name="course" required>
+                    <select class="form-control" id="course" name="course_code" required>
 
                         <?php foreach($courses as $course){
                             echo "<option value='" . $course['course_code'] . "'>" . $course['course_code'] . "</option>";

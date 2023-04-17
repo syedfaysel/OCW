@@ -4,6 +4,19 @@ $c = new Courses();
 
 $payments = $c->getPaymentInfo();
 
+
+$i = new Insert();
+
+if(isset($_GET['trx_id'])){
+    $trx_id = $_GET['trx_id'];
+    if($i->approveEnroll($trx_id)){
+        header("Location: manage-enrollment.php");
+    }
+    else{
+        echo "Error";
+    }
+}
+
 ?>
 
 
@@ -30,8 +43,15 @@ $payments = $c->getPaymentInfo();
                 <td><?php echo htmlspecialchars($p['approval']); ?></td>
 
                 <td>
-                    <a class="btn btn-info" href="edit-user/?username=<?= $p['trx_id']?>">Approve</a>
-                    <a class="btn btn-danger" href="delete-user/?username=<?= $p['trx_id']?>">Withdraw</a>
+                    <?php if($p['approval']!='Approved'){ ?>
+                    
+                    <a class="btn btn-info" href="manage-enrollment.php?trx_id=<?= $p['trx_id']?>">Approve</a>
+                    <?php }else { ?>
+                    <button class="btn btn-secondary disables">Approved</button>
+
+                    <?php } ?>
+                    
+
                 </td>
             </tr>
 

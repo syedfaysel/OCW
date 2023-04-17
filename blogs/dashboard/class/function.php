@@ -82,7 +82,7 @@ class admin_blog
         $post_img = $_FILES['post_img']['name'];
         $post_img_tmp = $_FILES['post_img']['tmp_name'];
         $post_category = $data['category'];
-        $author = 'syedfaysel';
+        $author = $data['author'];
         $post_status = $data['post_status'];
 
         $query = "INSERT INTO blogs (post_title, post_content, post_img, category, author, status) VALUES ('$post_title', '$post_content', '$post_img', '$post_category', '$author',  '$post_status')";
@@ -99,6 +99,14 @@ class admin_blog
     
     public function display_post(){
         $sql= "SELECT * FROM blogs";
+        if(mysqli_query($this->conn,$sql)){
+            $result = mysqli_query($this->conn,$sql);
+            return $result;
+        }
+    }
+
+    public function displayPostByUser($username){
+        $sql= "SELECT * FROM blogs WHERE author='$username'";
         if(mysqli_query($this->conn,$sql)){
             $result = mysqli_query($this->conn,$sql);
             return $result;

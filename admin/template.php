@@ -43,18 +43,7 @@
                             case "dashboard":
                                 include("view/dashboard_view.php");
                                 break;
-                            case "add_catagory":
-                                include("view/add_c_view.php");
-                                break;
-                            case "manage_catagory":
-                                include("view/manage_c_view.php");
-                                break;
-                            case "manage_post":
-                                include("view/manage_p_view.php");
-                                break;
-                            case "edit_image":
-                                include("view/edit_image_view.php");
-                                break;
+                            
                             case "edit_course":
                                 include("view/edit-course-view.php");
                                 break;
@@ -74,6 +63,11 @@
 
                             case "edit_user":
                                 include("view/edit-user-view.php");
+                                break;
+
+
+                            case 'add_tutorial':
+                                include("view/add-tutorial-view.php");
                                 break;
                             default:
                                 include("view/dashboard_view.php");

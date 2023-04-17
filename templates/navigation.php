@@ -46,12 +46,8 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="add-course.php">Add Course</a></li>
-                        <li><a class="dropdown-item" href="add-tutorial.php">Add Tutorial</a></li>
                         <li><a class="dropdown-item" href="add-resource.php">Add Resource</a></li>
                         <li><a class="dropdown-item" href="enrolled.php">Courses Enrolled</a></li>
-                        <li><a class="dropdown-item" href="add-resource.php">Add Resource</a></li>
-                        <li><a class="dropdown-item" href="add-resource.php">Add Resource</a></li>
                         <li><a class="dropdown-item" href="logout.php">Log out</a></li>
                     </ul>
                 </li>

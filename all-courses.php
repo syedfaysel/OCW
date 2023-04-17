@@ -17,9 +17,6 @@ include "./templates/header.php";
 ?>
 
 
-
-
-
 <title>Explore Courses</title>
 
 </head>

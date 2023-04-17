@@ -4,13 +4,14 @@ session_start();
 
 include "./config/dbconnect.php";
 include "./config/classes/Courses.php";
-$q = new Courses();
+include "./config/classes/Insert.php";
+    $q = new Courses();
+
+    $i = new Insert();
 
     // check GET request course_code param
     if(isset($_GET['course_code'])){
         $course_code = $_GET['course_code'];
-
-        
 
         // make sql
         $questions = $q->getQuestionsBy($course_code);
@@ -38,6 +39,48 @@ include "./templates/header.php"
 
         <h1 class="text-center"><?php echo htmlspecialchars($questions['course_code'])?> Discussion Forum</h1>
         <div class="discussion">
+
+            <!-- ask Question -->
+            <h3>Ask on the Forum</h3>
+
+            <?php 
+            
+
+            if(isset($_POST['submit'])){
+                unset($_POST['submit']);
+                $_POST['username'] = $_SESSION['username'];
+                $_POST['course_code'] = $course_code;
+
+                if($i->insertQuestion($_POST)){
+                    echo "Question posted";
+                }
+                else{
+                    echo "Error posting question";
+                }
+            }
+
+            
+            
+            
+            ?>
+            
+
+
+            <form class="" action="" method="POST">
+                
+
+                <div class="form-group my-2">
+
+                    <label for="">Title</label>
+                    <input class="form-control" type="text" name="question_title" id="">
+                    <label for="floatingTextarea">Question Descriptin</label>
+                    <textarea class="form-control" style="height: 100px" placeholder="Details here" id="floatingTextarea" name="question_body"></textarea>
+                    
+                </div>
+
+                <input class="btn btn-warning" type="submit" name="submit" value="Send">
+            </form>
+
             <?php foreach ($questions as $question){ ?>
                 <?php $username = $question['username']; $posted = $question['created_at']; ?>
                 

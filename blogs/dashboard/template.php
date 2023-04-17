@@ -2,8 +2,8 @@
     include("class/function.php");
     $obj= new admin_blog();
     session_start();
-    $logged_user = $_SESSION["username"];
-    if($logged_user==null){
+
+    if (!isset($_SESSION['username'])){
         header("location: /OCW/login.php");
     }
 
